@@ -1,0 +1,30 @@
+{
+    "functions": [
+        {
+            "id": "GETSTREAMVALUE",
+            "name": "GETSTREAMVALUE",
+            "parameters": [
+                {
+                    "name": "streamNumber",
+                    "type": "string"
+                },
+                {
+                    "name": "operatingCase",
+                    "type": "string"
+                },
+                {
+                    "name": "propertyType",
+                    "type": "string"
+                },
+                {
+                    "dimensionality": "matrix",
+                    "name": "searchRange",
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        }
+    ]
+}
