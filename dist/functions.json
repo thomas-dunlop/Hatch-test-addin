@@ -6,7 +6,7 @@
             "parameters": [
                 {
                     "name": "streamNumber",
-                    "type": "string"
+                    "type": "number"
                 },
                 {
                     "name": "operatingCase",
@@ -14,11 +14,6 @@
                 },
                 {
                     "name": "propertyType",
-                    "type": "string"
-                },
-                {
-                    "dimensionality": "matrix",
-                    "name": "searchRange",
                     "type": "string"
                 }
             ],

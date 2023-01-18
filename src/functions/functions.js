@@ -1,12 +1,14 @@
 ﻿/**
  * @customfunction GetStreamValue
- * @param {string} streamNumber
+ * @param {number} streamNumber
  * @param {string} operatingCase
  * @param {string} propertyType
- * @param {string[][]} searchRange
  * @returns {string} of PropertyValue.
  */
-export function getStreamValue(streamNumber, operatingCase, propertyType, searchRange) {
+
+export async function getStreamValue(streamNumber, operatingCase, propertyType) {
+  const searchRange = await getRange();
+
   const streamNumberIndex = findHeaderIndex("StreamNumber", searchRange);
   const operatingCaseIndex = findHeaderIndex("OperatingCase", searchRange);
   const propertyTypeIndex = findHeaderIndex("PropertyType", searchRange);
@@ -29,6 +31,23 @@ export function getStreamValue(streamNumber, operatingCase, propertyType, search
 
   return matchingRow[propertyValueIndex];
 }
+
+const getRange = async () => {
+  try {
+    const context = new Excel.RequestContext();
+    const worksheet = context.workbook.worksheets.getItem("Test");
+    const range = worksheet.getRange("PropTypeValue");
+    const searchRange = range.load("values");
+    await context.sync();
+    return searchRange.values;
+  } catch (searchError) {
+    let error = new CustomFunctions.Error(
+      CustomFunctions.ErrorCode.invalidValue,
+      `Search range not found with following error: ${searchError.message}`
+    );
+    throw error;
+  }
+};
 
 const findHeaderIndex = (headerName, searchRange) => {
   const index = searchRange[0].findIndex((element) => element === headerName);
