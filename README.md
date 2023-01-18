@@ -1,7 +1,7 @@
 # Hatch Test Add in
 
 ## How to install and set up add in
-1. Install node.js(https://nodejs.org/en/) and git(https://git-scm.com/downloads)
+1. Install [node.js](https://nodejs.org/en/) and [git](https://git-scm.com/downloads)
 2. Clone the respository
 3. Run `npm run build` in terminal
 4. Run `npm run start:desktop`
